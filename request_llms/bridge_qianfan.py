@@ -6,6 +6,8 @@ from functools import wraps
 from datetime import datetime, timedelta
 from toolbox import get_conf, update_ui, is_any_api_key, select_api_key, what_keys, clip_history, trimmed_format_exc, get_conf
 import copy
+import jieba
+jieba.initialize()
 
 model_name = '千帆大模型平台'
 timeout_bot_msg = '[Local Message] Request timeout. Network error.'
@@ -47,13 +49,36 @@ def get_access_token():
     return access_token_cache
     # else:
     #     return access_token_cache
-
-
+    
+    
+def compress_text(text):
+    segments_precise = jieba.cut(text, cut_all=False)
+    list = []
+    c = 0
+    for word in segments_precise:
+        c += 1
+        if word not in list and c%2==0:
+            list.append(word)
+    text = ""
+    for w in list:
+        text += w
+        if w[-1] in "abcdefghijklmnopqrstuvwxyz":
+            text += " "
+    if list.__len__() <= 1:
+        text = str(list)
+    return text
+def crop_messages(msg):
+    msg = msg[-11:]
+    if msg.__len__() > 2:
+        for i in range(0, msg.__len__()-2):
+            if msg[i]["content"].__len__() > 100:
+                msg[i]["content"] = compress_text(msg[i]["content"])
+    return msg
 def generate_message_payload(inputs, llm_kwargs, history, system_prompt):
     conversation_cnt = len(history) // 2
     if system_prompt == "": system_prompt = "Hello"
     messages = [{"role": "user", "content": system_prompt}]
-    messages.append({"role": "assistant", "content": 'Certainly!'})
+    messages.append({"role": "assistant", "content": '明白了！'})
     if conversation_cnt:
         for index in range(0, 2*conversation_cnt, 2):
             what_i_have_asked = {}
@@ -72,7 +97,15 @@ def generate_message_payload(inputs, llm_kwargs, history, system_prompt):
     what_i_ask_now = {}
     what_i_ask_now["role"] = "user"
     what_i_ask_now["content"] = inputs
-    messages.append(what_i_ask_now)
+    messages.append(what_i_ask_now)  
+    PRESERVE_TOKENS = get_conf("PRESERVE_TOKENS")
+    if PRESERVE_TOKENS:
+        messages = crop_messages(messages)  
+    #print(messages)
+    char_len = 0
+    for m in messages:
+        char_len += m["content"].__len__()
+    print(f"字符数：{char_len}")
     return messages
 
 def simple_generate_from_baidu_qianfan(input, url):

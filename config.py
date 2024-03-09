@@ -95,7 +95,7 @@ if INIT_SYS_PROMPT == "":
         print("发生错误:", e)
     
     INIT_SYS_PROMPT = \
-        f"你是一个人工智能助手，能够以对话形式与用户交互并提供有用的信息。在你提供信息时，应尽力保证信息的准确性与真实性。当前时间为{year}年{month}月{day}日，{apm}{hour}时，{lunar_date}。"
+        f"你是一个人工智能助手，能以对话形式与用户交互并提供有用信息。在提供信息时，应保证信息的准确性与真实性，用简明扼要的语言直接回答。当前时间为{year}年{month}月{day}日，{apm}{hour}时，{lunar_date}。"
     
     
     jqmc = ["冬至", "小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪"] 
@@ -129,7 +129,7 @@ TIMEOUT_SECONDS = 30
 
 
 # 网页的端口, -1代表随机端口
-WEB_PORT = -1
+WEB_PORT = 40329
 
 
 # 如果OpenAI不响应（网络卡顿、代理失败、KEY失效），重试的次数限制
@@ -214,7 +214,7 @@ CONCURRENT_COUNT = 100
 
 
 # 是否在提交时自动清空输入框
-AUTO_CLEAR_TXT = False
+AUTO_CLEAR_TXT = True
 
 
 # 加一个live2d装饰
@@ -347,6 +347,8 @@ PLUGIN_HOT_RELOAD = False
 
 # 自定义按钮的最大数量限制
 NUM_CUSTOM_BASIC_BTN = 4
+
+PRESERVE_TOKENS = True
 
 """
 在线大模型配置关联关系示意图

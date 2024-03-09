@@ -1,5 +1,8 @@
 
 def check_proxy(proxies):
+    if proxies == None:
+        return f"代理未启用"
+        
     import requests
     proxies_https = proxies['https'] if proxies is not None else '无'
     try:

@@ -1,7 +1,7 @@
 import os; os.environ['no_proxy'] = '*' # 避免代理网络产生意外污染
 
 from config import load_config, dump_config
-from toolbox import get_conf, set_conf
+from fast_toolbox import get_conf, set_conf
 
 help_menu_description = \
 """Github源代码开源和更新[地址🚀](https://github.com/binary-husky/gpt_academic),
@@ -160,6 +160,7 @@ def main():
                     temperature = gr.Slider(minimum=-0, maximum=2.0, value=1.0, step=0.01, interactive=True, label="Temperature",)
                     max_length_sl = gr.Slider(minimum=256, maximum=1024*32, value=4096, step=128, interactive=True, label="Local LLM MaxLength",)
                     system_prompt = gr.Textbox(show_label=True, lines=2, placeholder=f"System Prompt", label="System prompt", value=INIT_SYS_PROMPT)
+                    #preserve_tokens = gr.Checkbox(label="开启节约token模式", checked=True)
 
                 with gr.Tab("界面外观", elem_id="interact-panel"):
                     theme_dropdown = gr.Dropdown(AVAIL_THEMES, value=get_conf("THEME"), label="更换UI主题").style(container=False)
@@ -393,6 +394,14 @@ def main():
             outputs = [py_pickle_cookie, cookies, *customize_btns.values(), *predefined_btns.values()], _js=js_code_for_persistent_cookie_init)
         demo.load(None, inputs=[dark_mode], outputs=None, _js="""(dark_mode)=>{apply_cookie_for_checkbox(dark_mode);}""")    # 配置暗色主题或亮色主题
         demo.load(None, inputs=[gr.Textbox(LAYOUT, visible=False)], outputs=None, _js='(LAYOUT)=>{GptAcademicJavaScriptInit(LAYOUT);}')
+        
+        #自动切换为明亮主题，暗色主题看不惯
+        demo.load(None, _js="""() => {
+            setCookie("js_darkmode_cookie", "False", 365);
+            document.querySelectorAll('.dark').forEach(el => el.classList.remove('dark'));
+            document.querySelectorAll('code_pending_render').forEach(code => {code.remove();})
+        }
+        """)
 
     # gradio的inbrowser触发不太稳定，回滚代码到原始的浏览器打开函数
     def run_delayed_tasks():
@@ -409,7 +418,7 @@ def main():
         threading.Thread(target=open_browser, name="open-browser", daemon=True).start() # 打开浏览器页面
         threading.Thread(target=warm_up_mods, name="warm-up", daemon=True).start()      # 预热tiktoken模块
 
-    run_delayed_tasks()
+    #run_delayed_tasks()
     demo.queue(concurrency_count=CONCURRENT_COUNT).launch(
         quiet=True,
         server_name="0.0.0.0",
@@ -431,4 +440,9 @@ def main():
     #                 blocked_paths=["config.py","config_private.py","docker-compose.yml","Dockerfile",f"{PATH_LOGGING}/admin"])
 
 if __name__ == "__main__":
+    import line_profiler, sys
+    profile = line_profiler.LineProfiler(main)  # 把函数传递到性能分析器
+    profile.enable()  # 开始分析
     main()
+    profile.disable()  # 停止分析
+    profile.print_stats(sys.stdout)  # 打印出性能分析结果

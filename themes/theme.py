@@ -1,7 +1,7 @@
 import pickle
 import base64
 import uuid
-from toolbox import get_conf
+from fast_toolbox import get_conf
 
 """
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
