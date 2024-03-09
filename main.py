@@ -440,9 +440,9 @@ def main():
     #                 blocked_paths=["config.py","config_private.py","docker-compose.yml","Dockerfile",f"{PATH_LOGGING}/admin"])
 
 if __name__ == "__main__":
-    import line_profiler, sys
-    profile = line_profiler.LineProfiler(main)  # 把函数传递到性能分析器
-    profile.enable()  # 开始分析
+    #import line_profiler, sys
+    #profile = line_profiler.LineProfiler(main)  # 把函数传递到性能分析器
+    #profile.enable()  # 开始分析
     main()
-    profile.disable()  # 停止分析
-    profile.print_stats(sys.stdout)  # 打印出性能分析结果
+    #profile.disable()  # 停止分析
+    #profile.print_stats(sys.stdout)  # 打印出性能分析结果
