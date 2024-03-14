@@ -58,9 +58,9 @@
 
 + 下载安装包
   
-  下载地址：[](https://github.com/z-zeechung/qianfan_gpt_academic/releases/download/2024%E5%B9%B43%E6%9C%8814%E6%97%A5/Windows.zip)
+  下载地址：[https://github.com/z-zeechung/qianfan_gpt_academic/releases/download/2024%E5%B9%B43%E6%9C%8814%E6%97%A5/Windows.zip](https://github.com/z-zeechung/qianfan_gpt_academic/releases/download/2024%E5%B9%B43%E6%9C%8814%E6%97%A5/Windows.zip)
   
-  备用下载地址：[](https://hub.nuaa.cf/z-zeechung/qianfan_gpt_academic/releases/download/2024%E5%B9%B43%E6%9C%8814%E6%97%A5/Windows.zip)
+  备用下载地址：[https://hub.nuaa.cf/z-zeechung/qianfan_gpt_academic/releases/download/2024%E5%B9%B43%E6%9C%8814%E6%97%A5/Windows.zip](https://hub.nuaa.cf/z-zeechung/qianfan_gpt_academic/releases/download/2024%E5%B9%B43%E6%9C%8814%E6%97%A5/Windows.zip)
 
 + 解压安装包
 
