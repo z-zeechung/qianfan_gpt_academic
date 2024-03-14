@@ -260,7 +260,7 @@ def HotReload(f):
 
 #CREATED BY ZEECHUNG
 #将插件加载过程从主线程分离，加快启动速度
-import threading
+'''import threading
 hot_reload_functions = {}
 def FastHotReloadBase(*args, **kwargs):
 
@@ -286,6 +286,22 @@ def FastHotReloadBase(*args, **kwargs):
     thread = threading.Thread(target=import_function, args=(file_name, function_name))
     thread.start()
     return hot_reload_functions[function_name](*args, **kwargs)
+from functools import partial
+def FastHotReload(file_name, function_name):
+    return partial(FastHotReloadBase, file_name=file_name, function_name=function_name)'''
+#忽略上面这坨勾💩代码，多线程个锤子，直接启动后加载就是了
+def FastHotReloadBase(*args, **kwargs):
+
+    file_name = kwargs["file_name"]
+    function_name = kwargs["function_name"]
+    del kwargs["file_name"]
+    del kwargs["function_name"]
+
+    package = __import__(f"crazy_functions.{file_name}")
+    module = getattr(package, file_name)
+    function = getattr(module, function_name)
+    
+    return function(*args, **kwargs)
 from functools import partial
 def FastHotReload(file_name, function_name):
     return partial(FastHotReloadBase, file_name=file_name, function_name=function_name)

@@ -40,7 +40,7 @@ def get_crazy_functions():
 
     function_plugins = {
         "虚空终端": {
-            "Group": "对话|编程|学术|智能体",
+            "Group": "智能体",
             "Color": "stop",
             "AsButton": True,
             #"Function": HotReload(虚空终端),
@@ -217,18 +217,24 @@ def get_crazy_functions():
             "Function": FastHotReload("对话历史存档", "对话历史存档"),
         },
         "[多线程Demo]解析此项目本身（源码自译解）": {
-            "Group": "对话|编程",
+            "Group": "编程",
             "AsButton": False,  # 加入下拉菜单中
             "Info": "多线程解析并翻译此项目的源码 | 不需要输入参数",
             #"Function": HotReload(解析项目本身),
             "Function": FastHotReload("解析项目源代码", "解析项目本身"),
         },
         "历史上的今天": {
-            "Group": "对话",
+            "Group": "智能体",
             "AsButton": True,
             "Info": "查看历史上的今天事件 (这是一个面向开发者的插件Demo) | 不需要输入参数",
             #"Function": HotReload(高阶功能模板函数),
             "Function": FastHotReload("高级功能函数模板", "高阶功能模板函数"),
+        },
+        "自动生成PPT": {
+            "Group": "对话",
+            "AsButton": False,
+            "Info": "",
+            "Function": FastHotReload("生成PPT", "生成PPT"),
         },
         "精准翻译PDF论文": {
             "Group": "学术",
@@ -236,7 +242,7 @@ def get_crazy_functions():
             "AsButton": True,
             "Info": "精准翻译PDF论文为中文 | 输入参数为路径",
             #"Function": HotReload(批量翻译PDF文档),
-            "Function": FastHotReload("批量翻译PDF文档", "批量翻译PDF文档"),
+            "Function": FastHotReload("批量翻译PDF文档_多线程", "批量翻译PDF文档"),
         },
         "询问多个GPT模型": {
             "Group": "对话",
@@ -253,14 +259,23 @@ def get_crazy_functions():
             #"Function": HotReload(批量总结PDF文档),
             "Function": FastHotReload("批量总结PDF文档", "批量总结PDF文档"),
         },
-        "谷歌学术检索助手（输入谷歌学术搜索页url）": {
+        "批量总结PDF文档（图像PDF）": {
             "Group": "学术",
             "Color": "stop",
             "AsButton": False,  # 加入下拉菜单中
-            "Info": "使用谷歌学术检索助手搜索指定URL的结果 | 输入参数为谷歌学术搜索页的URL",
-            #"Function": HotReload(谷歌检索小助手),
-            "Function": FastHotReload("谷歌检索小助手", "谷歌检索小助手"),
+            "Info": "批量总结图像PDF文档的内容 | 输入参数为路径",
+            "Function": FastHotReload("批量总结图像PDF文档", "批量总结图像PDF文档"),
+            "AdvancedArgs": True,
+            "ArgsReminder": "请输入要识别语言的代码，支持的语言代码详见此网页：https://gitee.com/dalaomai/tessdata_fast。示例：①简体中文：chi_sim；②简体中文和英文：chi_sim+eng；③竖版繁体中文：chi_tra_vert",
         },
+        #"谷歌学术检索助手（输入谷歌学术搜索页url）": {
+        #    "Group": "学术",
+        #    "Color": "stop",
+        #    "AsButton": False,  # 加入下拉菜单中
+        #    "Info": "使用谷歌学术检索助手搜索指定URL的结果 | 输入参数为谷歌学术搜索页的URL",
+        #    #"Function": HotReload(谷歌检索小助手),
+        #    "Function": FastHotReload("谷歌检索小助手", "谷歌检索小助手"),
+        #},
         "理解PDF文档内容 （模仿ChatPDF）": {
             "Group": "学术",
             "Color": "stop",
@@ -269,23 +284,23 @@ def get_crazy_functions():
             #"Function": HotReload(理解PDF文档内容标准文件输入),
             "Function": FastHotReload("理解PDF文档内容", "理解PDF文档内容标准文件输入"),
         },
-        "英文Latex项目全文润色（输入路径或上传压缩包）": {
-            "Group": "学术",
-            "Color": "stop",
-            "AsButton": False,  # 加入下拉菜单中
-            "Info": "对英文Latex项目全文进行润色处理 | 输入参数为路径或上传压缩包",
-            #"Function": HotReload(Latex英文润色),
-            "Function": FastHotReload("Latex全文润色", "Latex英文润色"),
-        },
+        #"英文Latex项目全文润色（输入路径或上传压缩包）": {
+        #    "Group": "学术",
+        #    "Color": "stop",
+        #    "AsButton": False,  # 加入下拉菜单中
+        #    "Info": "对英文Latex项目全文进行润色处理 | 输入参数为路径或上传压缩包",
+        #    #"Function": HotReload(Latex英文润色),
+        #    "Function": FastHotReload("Latex全文润色", "Latex英文润色"),
+        #},
 
-        "中文Latex项目全文润色（输入路径或上传压缩包）": {
-            "Group": "学术",
-            "Color": "stop",
-            "AsButton": False,  # 加入下拉菜单中
-            "Info": "对中文Latex项目全文进行润色处理 | 输入参数为路径或上传压缩包",
-            #"Function": HotReload(Latex中文润色),
-            "Function": FastHotReload("Latex全文润色", "Latex中文润色"),
-        },
+        #"中文Latex项目全文润色（输入路径或上传压缩包）": {
+        #    "Group": "学术",
+        #    "Color": "stop",
+        #    "AsButton": False,  # 加入下拉菜单中
+        #    "Info": "对中文Latex项目全文进行润色处理 | 输入参数为路径或上传压缩包",
+        #    #"Function": HotReload(Latex中文润色),
+        #    "Function": FastHotReload("Latex全文润色", "Latex中文润色"),
+        #},
         # 已经被新插件取代
         # "英文Latex项目全文纠错（输入路径或上传压缩包）": {
         #     "Group": "学术",
@@ -318,6 +333,19 @@ def get_crazy_functions():
             #"Function": HotReload(Markdown中译英),
             "Function": FastHotReload("批量Markdown翻译", "Markdown中译英"),
         },
+        "连接网络回答问题（输入问题后点击该插件）": {
+            "Group": "对话",
+            "Color": "stop",
+            "AsButton": False,  # 加入下拉菜单中
+            "Info": "连接网络回答问题| 输入参数是一个问题",
+            "Function": FastHotReload("联网的ChatGPT_百度版", "连接百度搜索回答问题"),
+        },
+        "联网查资料写作": {
+            "Group": "对话",
+            "Color": "stop",
+            "AsButton": False,  # 加入下拉菜单中
+            "Function": FastHotReload("联网查资料写作", "联网查资料写作"),
+        },
     }
 
     # -=--=- 尚未充分测试的实验性插件 & 需要额外依赖的插件 -=--=-
@@ -340,7 +368,7 @@ def get_crazy_functions():
         print(trimmed_format_exc())
         print("Load function plugin failed")
 
-    try:
+    '''try:
         #from crazy_functions.联网的ChatGPT import 连接网络回答问题
 
         function_plugins.update(
@@ -371,7 +399,7 @@ def get_crazy_functions():
         )
     except:
         print(trimmed_format_exc())
-        print("Load function plugin failed")
+        print("Load function plugin failed")'''
 
     try:
         #from crazy_functions.解析项目源代码 import 解析任意code项目
@@ -413,7 +441,7 @@ def get_crazy_functions():
         print(trimmed_format_exc())
         print("Load function plugin failed")
 
-    try:
+    '''try:
         #from crazy_functions.图片生成 import 图片生成_DALLE2, 图片生成_DALLE3, 图片修改_DALLE2
 
         function_plugins.update(
@@ -480,9 +508,9 @@ def get_crazy_functions():
         )
     except:
         print(trimmed_format_exc())
-        print("Load function plugin failed")
+        print("Load function plugin failed")'''
 
-    try:
+    '''try:
         #from crazy_functions.数学动画生成manim import 动画生成
 
         function_plugins.update(
@@ -499,7 +527,7 @@ def get_crazy_functions():
         )
     except:
         print(trimmed_format_exc())
-        print("Load function plugin failed")
+        print("Load function plugin failed")'''
 
     try:
         #from crazy_functions.批量Markdown翻译 import Markdown翻译指定语言
@@ -527,7 +555,7 @@ def get_crazy_functions():
         function_plugins.update(
             {
                 "构建知识库（先上传文件素材,再运行此插件）": {
-                    "Group": "对话",
+                    "Group": "智能体",
                     "Color": "stop",
                     "AsButton": False,
                     "AdvancedArgs": True,
@@ -547,7 +575,7 @@ def get_crazy_functions():
         function_plugins.update(
             {
                 "知识库文件注入（构建知识库后,再运行此插件）": {
-                    "Group": "对话",
+                    "Group": "智能体",
                     "Color": "stop",
                     "AsButton": False,
                     "AdvancedArgs": True,
@@ -561,7 +589,7 @@ def get_crazy_functions():
         print(trimmed_format_exc())
         print("Load function plugin failed")
 
-    try:
+    '''try:
         #from crazy_functions.交互功能函数模板 import 交互功能模板函数
 
         function_plugins.update(
@@ -577,9 +605,9 @@ def get_crazy_functions():
         )
     except:
         print(trimmed_format_exc())
-        print("Load function plugin failed")
+        print("Load function plugin failed")'''
 
-    try:
+    '''try:
         #from crazy_functions.Latex输出PDF import Latex英文纠错加PDF对比
         #from crazy_functions.Latex输出PDF import Latex翻译中文并重新编译PDF
         #from crazy_functions.Latex输出PDF import PDF翻译中文并重新编译PDF
@@ -635,9 +663,9 @@ def get_crazy_functions():
         )
     except:
         print(trimmed_format_exc())
-        print("Load function plugin failed")
+        print("Load function plugin failed")'''
 
-    try:
+    '''try:
         from fast_toolbox import get_conf
 
         ENABLE_AUDIO = get_conf("ENABLE_AUDIO")
@@ -658,9 +686,9 @@ def get_crazy_functions():
             )
     except:
         print(trimmed_format_exc())
-        print("Load function plugin failed")
+        print("Load function plugin failed")'''
 
-    try:
+    '''try:
         #from crazy_functions.批量翻译PDF文档_NOUGAT import 批量翻译PDF文档
 
         function_plugins.update(
@@ -676,7 +704,7 @@ def get_crazy_functions():
         )
     except:
         print(trimmed_format_exc())
-        print("Load function plugin failed")
+        print("Load function plugin failed")'''
 
     try:
         #from crazy_functions.函数动态生成 import 函数动态生成
@@ -684,7 +712,7 @@ def get_crazy_functions():
         function_plugins.update(
             {
                 "动态代码解释器（CodeInterpreter）": {
-                    "Group": "智能体",
+                    "Group": "编程",
                     "Color": "stop",
                     "AsButton": False,
                     #"Function": HotReload(函数动态生成),
@@ -696,7 +724,7 @@ def get_crazy_functions():
         print(trimmed_format_exc())
         print("Load function plugin failed")
 
-    try:
+    '''try:
         #from crazy_functions.多智能体 import 多智能体终端
 
         function_plugins.update(
@@ -712,7 +740,7 @@ def get_crazy_functions():
         )
     except:
         print(trimmed_format_exc())
-        print("Load function plugin failed")
+        print("Load function plugin failed")'''
 
     try:
         #from crazy_functions.互动小游戏 import 随机小游戏

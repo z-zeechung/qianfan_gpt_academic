@@ -202,6 +202,13 @@ def web():
             show_size.SetLabel(f"缩放：{new_size}% ")
     browser.Bind(wx.EVT_MOUSEWHEEL, adjust_web)'''
     
+    import wx.html2 as wx2
+    import webbrowser
+    def OnNavigating(event):
+        url = event.GetURL()
+        webbrowser.open_new_tab(url)
+    browser.Bind(wx2.EVT_WEBVIEW_NEWWINDOW, OnNavigating)
+    
     # 显示框架
     frame.Show()
     

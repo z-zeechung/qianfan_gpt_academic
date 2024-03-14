@@ -350,6 +350,8 @@ NUM_CUSTOM_BASIC_BTN = 4
 
 PRESERVE_TOKENS = True
 
+TESSERACT_PATH = "..\\Tesseract-OCR\\tesseract.exe"
+
 """
 在线大模型配置关联关系示意图
 │
