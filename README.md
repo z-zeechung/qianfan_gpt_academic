@@ -44,19 +44,19 @@
 
 +  
   
-  ![](.\doc\2024-03-14-18-38-54-image.png)
+  ![](https://raw.githubusercontent.com/z-zeechung/qianfan_gpt_academic/main/docs\2024-03-14-18-38-54-image.png)
   
   在“应用接入”界面中点击“创建应用”
 
 +  
   
-  ![](.\doc\2024-03-14-18-40-09-image.png)
+  ![](https://raw.githubusercontent.com/z-zeechung/qianfan_gpt_academic/main/docs/2024-03-14-18-40-09-image.png)
   
   输入应用名称和应用描述，服务配置依照默认即可，之后点“确定”
 
 +  
   
-  ![](.\doc\2024-03-14-18-42-45-image.png)
+  ![](https://raw.githubusercontent.com/z-zeechung/qianfan_gpt_academic/main/docs/2024-03-14-18-42-45-image.png)
   
   记下API Key（账户）和Serect Key（密码），待会有用
 
@@ -68,13 +68,13 @@
 
 +  
   
-  ![](.\doc\2024-03-14-18-47-26-image.png)
+  ![](https://raw.githubusercontent.com/z-zeechung/qianfan_gpt_academic/main/docs/2024-03-14-18-47-26-image.png)
   
   通过exe启动程序
 
 +  
   
-  ![](.\doc\2024-03-14-18-49-55-image.png)
+  ![](https://raw.githubusercontent.com/z-zeechung/qianfan_gpt_academic/main/docs/2024-03-14-18-49-55-image.png)
   
   在左上角“更换模型”选项卡中填入刚刚记下的API Key（账户）和Serect Key（密码）。
 
